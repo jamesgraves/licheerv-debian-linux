@@ -22,6 +22,19 @@ build process.  TODO: add support for RPM based Linux systems.
 Run `build.sh` to download (if needed) and build the various software packages
 needed for the Lichee RV image.
 
+Run `create_rootfs.sh` to download the Debian root filesystem into the `rootfs`
+directory, and prepare that for boot.
+
 Run `burn.sh /dev/sdX` (where 'X' corresponds to the micro-SD card
 device on the host system) to write a bootable image onto a micro-SD
 card for use with the Lichee RV board.
+
+Running
+=======
+
+This image currently does not have the HDMI working.
+
+Install the micro-SD card in the Lichee RV, connect the serial console,
+and power it on.
+
+Login with username `root` and password `licheerv`.
