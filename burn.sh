@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+echo "untested script, do not use"
+exit 0
+
 set -eou pipefail
 
 #
