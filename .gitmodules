@@ -10,3 +10,6 @@
 [submodule "rtl8723ds"]
 	path = rtl8723ds
 	url = https://github.com/lwfinger/rtl8723ds.git
+[submodule "riscv-gnu-toolchain"]
+	path = riscv-gnu-toolchain
+	url = https://github.com/riscv/riscv-gnu-toolchain
