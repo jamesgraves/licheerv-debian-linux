@@ -1,0 +1,4 @@
+# <device>        <dir>        <type>        <options>            <dump> <pass>
+/dev/mmcblk0p1    /boot        ext2          rw,defaults,noatime  1      1
+/dev/mmcblk0p2    /            ext4          rw,defaults,noatime  1      1
+/dev/mmcblk0p3    swap         swap          defaults,noatime     0      0
