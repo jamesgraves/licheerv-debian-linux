@@ -4,3 +4,6 @@
 [submodule "linux"]
 	path = linux
 	url = https://github.com/smaeul/linux
+[submodule "opensbi"]
+	path = opensbi
+	url = https://github.com/smaeul/opensbi
