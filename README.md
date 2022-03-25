@@ -1,5 +1,7 @@
 # licheerv-debian-linux
-Build scripts for creating a Debian GNU/Linux image for the Lichee RV RISC-V board
+
+Build scripts for creating a Debian GNU/Linux image for the Lichee RV
+RISC-V board on a Linux host system.
 
 Based on build instructions created by Andreas Jung:
 
@@ -8,9 +10,10 @@ https://andreas.welcomes-you.com/boot-sw-debian-risc-v-lichee-rv/
 Disclaimer
 ==========
 
-The `burn.sh` script will write data to the specified storage device. Make sure
+The `write_sd_card.sh` script will write data to the specified storage device. Make sure
 the device specified is the micro-SD card you intend to erase and write the
-operating system image on.
+operating system image on. Run the `dmesg` command after inserting
+the micro-SD card to see what the storage device name is.
 
 Instructions
 ============
@@ -21,10 +24,10 @@ build process.  TODO: add support for RPM based Linux systems.
 
 Second, run `build.sh` to download (if needed) and build the various
 software packages needed for the Lichee RV image. This includes the GNU
-cross-compile toolchain.
+cross-compile toolchain.  This can take a long time.
 
-Third, run `setup_rootfs.sh` to download the Debian root filesystem into the `rootfs`
-directory, and prepare it for boot.
+Third, run `setup_rootfs.sh` to download the minimal Debian root
+filesystem into the `rootfs` directory, and prepare it for running.
 
 Fourth, run `write_sd_card.sh /dev/sdX` (where 'X' corresponds to the micro-SD card
 device on the host system) to write a bootable image onto a micro-SD
