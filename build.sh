@@ -50,4 +50,7 @@ pushd rtl8723ds
 make -j `nproc` ARCH=riscv CROSS_COMPILE=$cwd/riscv64-unknown-linux-gnu/bin/riscv64-unknown-linux-gnu- KSRC=$cwd/linux-build modules
 popd
 
+echo "Generate u-boot script"
+./u-boot/tools/mkimage -T script -O linux -d licheerv_u-boot-bootscr.txt boot.scr
+
 echo "Successfully finished build process"
