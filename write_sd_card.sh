@@ -17,11 +17,13 @@ SD_CARD=$1
 # Check that all partitions on SD card are unmounted.
 #
 if [ -b ${SD_CARD} ]; then
-	for partitions in ${SD_CARD}[1-9]
+	for i in 1 2 3 4 5 6 7 8 9
 	do
+		partition=${SD_CARD}${i}
 		if mount | grep --quiet ${partition} ; then
 			echo "${partition} is currently mounted."
-			echo "You may need to manually umount it:"
+			echo "All parittions of the SD card must be unmounted first."
+			echo "To manually umount it:"
 			echo "   umount ${partition}"
 			exit 1
 		fi
@@ -40,6 +42,13 @@ sudo parted -s -a optimal -- ${SD_CARD} mklabel gpt
 sudo parted -s -a optimal -- ${SD_CARD} mkpart primary ext2 40MiB 100MiB
 sudo parted -s -a optimal -- ${SD_CARD} mkpart primary ext4 100MiB -1GiB
 sudo parted -s -a optimal -- ${SD_CARD} mkpart primary linux-swap -1GiB 100%
+for i in 0 1 2 3 4 5 6 7 8 9
+do
+	if [ -b ${SD_CARD}1 -a -b ${SD_CARD}2 -a -b ${SD_CARD}3 ]; then
+		break
+	fi
+	sleep 1
+done
 echo "Create filesystems and swap space"
 sudo mkfs.ext2 ${SD_CARD}1
 sudo mkfs.ext4 ${SD_CARD}2
@@ -54,10 +63,12 @@ echo "Copy files to /boot partition"
 sudo mount ${SD_CARD}1 /mnt/sdcard_boot
 sudo cp linux-build/arch/riscv/boot/Image.gz /mnt/sdcard_boot
 sudo cp boot.scr /mnt/sdcard_boot
+sudo sync
 sudo umount /mnt/sdcard_boot
 echo "Copy files to root filesystem"
 sudo mount ${SD_CARD}2 /mnt/sdcard_rootfs
 sudo cp -a rootfs/* /mnt/sdcard_rootfs/
+sudo sync
 sudo umount /mnt/sdcard_rootfs
 sudo rmdir /mnt/sdcard_boot
 sudo rmdir /mnt/sdcard_rootfs
