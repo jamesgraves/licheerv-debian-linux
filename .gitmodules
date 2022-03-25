@@ -10,9 +10,11 @@
 [submodule "rtl8723ds"]
 	path = rtl8723ds
 	url = https://github.com/lwfinger/rtl8723ds.git
+	ignore = dirty
 [submodule "riscv-gnu-toolchain"]
 	path = riscv-gnu-toolchain
 	url = https://github.com/riscv/riscv-gnu-toolchain
 [submodule "u-boot"]
 	path = u-boot
 	url = https://github.com/smaeul/u-boot.git
+	ignore = dirty
