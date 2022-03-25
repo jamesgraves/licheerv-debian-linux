@@ -1,15 +1,12 @@
 #!/usr/bin/env bash
 
-echo "untested script, do not use"
-exit 0
-
 set -eou pipefail
 
 #
 # Check micro-SD card
 #
 
-if [ $# -ne 2 ]; then
+if [ $# -ne 1 ]; then
 	echo "Specify SD card device (such as /dev/sdc) on command line"
 	exit 1
 fi
