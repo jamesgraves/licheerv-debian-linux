@@ -19,13 +19,14 @@ Debian-based host operating system (Debian, Ubuntu, Mint) can use the
 `prepare_debian_host.sh` script to install OS packages needed for the
 build process.  TODO: add support for RPM based Linux systems.
 
-Run `build.sh` to download (if needed) and build the various software packages
-needed for the Lichee RV image.
+Second, run `build.sh` to download (if needed) and build the various
+software packages needed for the Lichee RV image. This includes the GNU
+cross-compile toolchain.
 
-Run `create_rootfs.sh` to download the Debian root filesystem into the `rootfs`
-directory, and prepare that for boot.
+Third, run `setup_rootfs.sh` to download the Debian root filesystem into the `rootfs`
+directory, and prepare it for boot.
 
-Run `burn.sh /dev/sdX` (where 'X' corresponds to the micro-SD card
+Fourth, run `write_sd_card.sh /dev/sdX` (where 'X' corresponds to the micro-SD card
 device on the host system) to write a bootable image onto a micro-SD
 card for use with the Lichee RV board.
 
