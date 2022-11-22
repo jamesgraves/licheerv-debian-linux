@@ -61,8 +61,11 @@ do
 done
 echo "Create filesystems and swap space"
 sudo mkfs.ext2 ${SD_CARD}${p}1
+sleep 1
 sudo mkfs.ext4 ${SD_CARD}${p}2
+sleep 1
 sudo mkswap ${SD_CARD}${p}3
+sleep 1
 echo "Write SPL"
 sudo dd if=sun20i_d1_spl/nboot/boot0_sdcard_sun20iw1p1.bin of=${SD_CARD} bs=8192 seek=16
 echo "Write u-boot table of contents"
@@ -80,6 +83,6 @@ sudo mount ${SD_CARD}${p}2 /mnt/sdcard_rootfs
 sudo cp -a rootfs/* /mnt/sdcard_rootfs/
 sudo sync
 sudo umount /mnt/sdcard_rootfs
-sudo rmdir /mnt/sdcard_boot
-sudo rmdir /mnt/sdcard_rootfs
+sudo rm -rf /mnt/sdcard_boot
+sudo rm -rf /mnt/sdcard_rootfs
 echo "Successfully finished writing Lichee RV image to ${SD_CARD}"
