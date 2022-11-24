@@ -83,6 +83,6 @@ sudo mount ${SD_CARD}${p}2 /mnt/sdcard_rootfs
 sudo cp -a rootfs/* /mnt/sdcard_rootfs/
 sudo sync
 sudo umount /mnt/sdcard_rootfs
-sudo rm /mnt/sdcard_boot
-sudo rm /mnt/sdcard_rootfs
+sudo rmdir /mnt/sdcard_boot
+sudo rmdir /mnt/sdcard_rootfs
 echo "Successfully finished writing Lichee RV image to ${SD_CARD}"
