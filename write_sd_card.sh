@@ -60,9 +60,9 @@ do
 	sleep 1
 done
 echo "Create filesystems and swap space"
-sudo mkfs.ext2 ${SD_CARD}${p}1
+sudo mkfs -t ext2 ${SD_CARD}${p}1
 sleep 4
-sudo mkfs.ext4 ${SD_CARD}${p}2
+sudo mkfs -t ext4 ${SD_CARD}${p}2
 sleep 4
 sudo mkswap ${SD_CARD}${p}3
 sleep 4
