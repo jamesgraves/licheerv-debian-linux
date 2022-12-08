@@ -60,9 +60,12 @@ do
 	sleep 1
 done
 echo "Create filesystems and swap space"
-sudo mkfs.ext2 ${SD_CARD}${p}1
-sudo mkfs.ext4 ${SD_CARD}${p}2
+sudo mkfs -t ext2 ${SD_CARD}${p}1
+sleep 4
+sudo mkfs -t ext4 ${SD_CARD}${p}2
+sleep 4
 sudo mkswap ${SD_CARD}${p}3
+sleep 4
 echo "Write SPL"
 sudo dd if=sun20i_d1_spl/nboot/boot0_sdcard_sun20iw1p1.bin of=${SD_CARD} bs=8192 seek=16
 echo "Write u-boot table of contents"
@@ -70,6 +73,7 @@ sudo dd if=u-boot.toc1 of=${SD_CARD} bs=512 seek=32800
 sudo mkdir -p /mnt/sdcard_boot
 sudo mkdir -p /mnt/sdcard_rootfs
 echo "Copy files to /boot partition"
+sudo sync
 sudo mount ${SD_CARD}${p}1 /mnt/sdcard_boot
 sudo cp linux-build/arch/riscv/boot/Image.gz /mnt/sdcard_boot
 sudo cp boot.scr /mnt/sdcard_boot
