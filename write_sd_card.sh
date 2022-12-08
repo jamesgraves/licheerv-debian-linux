@@ -59,10 +59,14 @@ do
 	fi
 	sleep 1
 done
+sleep 2
 echo "Create filesystems and swap space"
-sudo mkfs.ext2 ${SD_CARD}${p}1
-sudo mkfs.ext4 ${SD_CARD}${p}2
+sudo mkfs -t ext2 ${SD_CARD}${p}1
+sleep 4
+sudo mkfs -t ext4 ${SD_CARD}${p}2
+sleep 4
 sudo mkswap ${SD_CARD}${p}3
+sleep 4
 echo "Write SPL"
 sudo dd if=sun20i_d1_spl/nboot/boot0_sdcard_sun20iw1p1.bin of=${SD_CARD} bs=8192 seek=16
 echo "Write u-boot table of contents"
