@@ -1,0 +1,9 @@
+#build_notes.txt
+Updating all git submodules
+Submodule 'linux' (https://github.com/smaeul/linux) registered for path 'linux'
+Submodule 'opensbi' (https://github.com/smaeul/opensbi) registered for path 'opensbi'
+Submodule 'riscv-gnu-toolchain' (https://github.com/riscv/riscv-gnu-toolchain) registered for path 'riscv-gnu-toolchain'
+Submodule 'rtl8723ds' (https://github.com/lwfinger/rtl8723ds.git) registered for path 'rtl8723ds'
+Submodule 'sun20i_d1_spl' (https://github.com/smaeul/sun20i_d1_spl) registered for path 'sun20i_d1_spl'
+Submodule 'u-boot' (https://github.com/smaeul/u-boot.git) registered for path 'u-boot'
+Cloning into '/home/frodo/sbc/riscv/10_JamesGraves_LicheeDebian/linux'...
